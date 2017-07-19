@@ -182,7 +182,7 @@ def saveDatatoDesDB(mySQLDict, dataDict, sensDict, listDict, cur1, cur2, cur3, c
 				countidCard = sensDict[key]
 
 			SUM = countname + counttelphone + countemail + countadress + countidCard
-			print SUM
+			#print SUM
 
 	if count == 1:
 		senseGrade = u'低'.decode('utf-8')
