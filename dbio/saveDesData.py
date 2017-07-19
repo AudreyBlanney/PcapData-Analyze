@@ -47,7 +47,7 @@ telpattern1 = re.compile(r'\d{3,4}-\d{6,10}')
 telpattern2 = re.compile(r'\(\d{3,4}\)\d{6,10}')
 telpattern3 = re.compile(r'[86]{0,2}1[3458]\d{9}')
 
-emailPattern = re.compile(r'\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}')
+emailPattern = re.compile(r'(\w[-\w.+]*@[A-Za-z0-9][-A-Za-z0-9]+\.+[A-Za-z]{2,14})')
 #emailPattern = re.compile(r'([\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?')
 #emailPattern2 = re.compile(r'\<[[:alnum:]_\-]+\.?[[:alnum:]]+@([[:alnum:]_\-]+\.)+(com|cn|edu|org|net|gov)\.?\>')
 idCardPattern = re.compile(r'\d{17}(?:\d|x)')
@@ -95,7 +95,7 @@ def calcSenseGrade(bodyStr, nameList, filterNameList):
 		emailList = emailPattern.findall(bodyStr, re.I|re.M|re.S)
 		if emailList:
 			for email in emailList:
-				#print email
+				print email
 				sensDict['email'] += 1
 				listDict['email'].append(email)
 				
