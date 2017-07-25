@@ -22,22 +22,22 @@ def getDesDataTableHandle(mySQLDict):
 	cur5=conn.cursor()
 	cur6=conn.cursor()
 
-	sql1 = 'create table if not exists ' + mySQLDict['secondDataTable'] +"(ID int auto_increment, DES_IP VARCHAR(32),TITLE text charset utf8, URL text charset utf8, DATE VARCHAR(32), HTML_BODY mediumtext charset utf8, DATA_TYPE VARCHAR(255) charset utf8, SENS_GRADE VARCHAR(8) charset utf8, NAME VARCHAR(2048) charset utf8, IDCARD VARCHAR(2048) charset utf8, TELPHONE VARCHAR(2048) charset utf8, EMAIL VARCHAR(2048) charset utf8, ADDRESS VARCHAR(2048) charset utf8, Sign int NOT NULL DEFAULT 0, Remark text charset utf8, primary key(ID))"
+	sql1 = 'create table if not exists ' + mySQLDict['secondDataTable'] +"(id int auto_increment, des_ip VARCHAR(32),title text charset utf8, url text charset utf8, date VARCHAR(32), html_body mediumtext charset utf8, data_type VARCHAR(255) charset utf8, sens_grade VARCHAR(8) charset utf8, name VARCHAR(2048) charset utf8, idcard VARCHAR(2048) charset utf8, telephone VARCHAR(2048) charset utf8, email VARCHAR(2048) charset utf8, address VARCHAR(2048) charset utf8, sign int NOT NULL DEFAULT 0, remark text charset utf8, primary key(id))"
 	cur1.execute(sql1)
 
-	sql2 = 'create table if not exists ' + mySQLDict['thirdDataTable'] +"(ID int auto_increment, DES_IP VARCHAR(32),TITLE text charset utf8, URL text charset utf8, DATE VARCHAR(32), HTML_BODY mediumtext charset utf8, Sign int NOT NULL DEFAULT 0, Remark text charset utf8, primary key(ID))"
+	sql2 = 'create table if not exists ' + mySQLDict['thirdDataTable'] +"(id int auto_increment, des_ip VARCHAR(32),title text charset utf8, url text charset utf8, date VARCHAR(32), html_body mediumtext charset utf8, sign int NOT NULL DEFAULT 0, remark text charset utf8, primary key(id))"
 	cur2.execute(sql2)
 
-	sql3 = 'create table if not exists ' + mySQLDict['fourthDataTable'] +"(ID int auto_increment, SRC_IP VARCHAR(32), DES_IP VARCHAR(32), URL text charset utf8, SessionID VARCHAR(255), DATE VARCHAR(32), userName VARCHAR(64) charset utf8, passWord VARCHAR(128), primary key(ID))"
+	sql3 = 'create table if not exists ' + mySQLDict['fourthDataTable'] +"(id int auto_increment, src_ip VARCHAR(32), des_ip VARCHAR(32), url text charset utf8, sessionid VARCHAR(255), date VARCHAR(32), username VARCHAR(64) charset utf8, password VARCHAR(128), primary key(id))"
 	cur3.execute(sql3)
 
-	sql4 = 'create table if not exists ' + mySQLDict['fifthDataTable'] +"(ID int auto_increment, SRC_IP VARCHAR(32), DES_IP VARCHAR(32), TITLE text charset utf8, URL text charset utf8, SessionID VARCHAR(255), DATE VARCHAR(32), TYPE VARCHAR(32), HEAD mediumtext charset utf8, Response mediumtext charset utf8, level varchar(32) NOT NULL DEFAULT 'high', Remark text charset utf8, primary key(ID))"
+	sql4 = 'create table if not exists ' + mySQLDict['fifthDataTable'] +"(id int auto_increment, src_ip VARCHAR(32), des_ip VARCHAR(32), title text charset utf8, url text charset utf8, sessionid VARCHAR(255), date VARCHAR(32), type VARCHAR(32), head mediumtext charset utf8, response mediumtext charset utf8, level varchar(32) NOT NULL DEFAULT 'high', remark text charset utf8, primary key(id))"
 	cur4.execute(sql4)
 
-	sql5 = 'create table if not exists user_collection(ID int auto_increment, SRC_IP VARCHAR(32), DES_IP VARCHAR(32), URL text charset utf8, SessionID VARCHAR(255), DATE VARCHAR(32), userName VARCHAR(64) charset utf8, passWord VARCHAR(128), primary key(ID),UNIQUE KEY (userName))'
+	sql5 = 'create table if not exists user_collection(id int auto_increment, src_ip VARCHAR(32), des_ip VARCHAR(32), url text charset utf8, sessionid VARCHAR(255), date VARCHAR(32), username VARCHAR(64) charset utf8, password VARCHAR(128), primary key(id),UNIQUE KEY (userName))'
 	cur5.execute(sql5)
 
-	sql6 = 'create table if not exists data_batch(ID int auto_increment, SRC_IP VARCHAR(32), DES_IP VARCHAR(32), SessionID VARCHAR(255), TITLE text charset utf8, URL text charset utf8, DATE VARCHAR(32), HTML_BODY mediumtext charset utf8, DATA_TYPE VARCHAR(255) charset utf8, NAME VARCHAR(2048) charset utf8, IDCARD VARCHAR(2048) charset utf8, TELPHONE VARCHAR(2048) charset utf8, EMAIL VARCHAR(2048) charset utf8, ADDRESS VARCHAR(2048) charset utf8, Sign int NOT NULL DEFAULT 0, SUM VARCHAR(64), primary key(ID))'
+	sql6 = 'create table if not exists data_batch(id int auto_increment, src_ip VARCHAR(32), des_ip VARCHAR(32), sessionid VARCHAR(255), title text charset utf8, url text charset utf8, date VARCHAR(32), html_body mediumtext charset utf8, data_type VARCHAR(255) charset utf8, name VARCHAR(2048) charset utf8, idcard VARCHAR(2048) charset utf8, telephone VARCHAR(2048) charset utf8, email VARCHAR(2048) charset utf8, address VARCHAR(2048) charset utf8, sign int NOT NULL DEFAULT 0, sum VARCHAR(64), primary key(id))'
 	cur6.execute(sql6)
 	return conn, cur1, cur2, cur3, cur4, cur5, cur6
 
@@ -190,32 +190,32 @@ def saveDatatoDesDB(mySQLDict, dataDict, sensDict, listDict, cur1, cur2, cur3, c
 
 	if count > 0:
 		try:
-			sql = 'insert into '+mySQLDict['secondDataTable']+'(TITLE, DES_IP, URL, DATE, HTML_BODY, DATA_TYPE, SENS_GRADE, NAME, IDCARD, TELPHONE, EMAIL, ADDRESS) select \'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\', \'%s\' from dual where not exists(select URL from ' % (dataDict['title'], dataDict['desIP'], dataDict['url'], dataDict['date'], dataDict['htmlBody'], dataType, senseGrade,nameStr,idCardStr,telphoneStr,emailStr,adressStr) +mySQLDict['secondDataTable']+' where URL = \'%s\')' % dataDict['url']
+			sql = 'insert into '+mySQLDict['secondDataTable']+'(title, des_ip, url, date, html_body, data_type, sens_grade, name, idcard, telephone, email, address) select \'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\', \'%s\' from dual where not exists(select url from ' % (dataDict['title'], dataDict['desIP'], dataDict['url'], dataDict['date'], dataDict['htmlBody'], dataType, senseGrade,nameStr,idCardStr,telphoneStr,emailStr,adressStr) +mySQLDict['secondDataTable']+' where url = \'%s\')' % dataDict['url']
 			cur1.execute(sql)
-			sq6 = 'insert into data_batch(SRC_IP, DES_IP, SessionID, TITLE, URL, DATE, HTML_BODY, DATA_TYPE, NAME, IDCARD, TELPHONE, EMAIL, ADDRESS, SUM) values(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\',\'%s\',\'%s\',\'%s\', \'%s\', \'%s\', \'%s\', \'%s\',\'%s\',\'%s\')' % (dataDict['srcIP'], dataDict['desIP'], dataDict['sessionID'], dataDict['title'], dataDict['url'], dataDict['date'], dataDict['htmlBody'], dataType,nameStr,idCardStr,telphoneStr,emailStr,adressStr,SUM)
+			sq6 = 'insert into data_batch(src_ip, des_ip, sessionid, title, url, date, html_body, data_type, name, idcard, telephone, email, address, sum) values(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\',\'%s\',\'%s\',\'%s\', \'%s\', \'%s\', \'%s\', \'%s\',\'%s\',\'%s\')' % (dataDict['srcIP'], dataDict['desIP'], dataDict['sessionID'], dataDict['title'], dataDict['url'], dataDict['date'], dataDict['htmlBody'], dataType,nameStr,idCardStr,telphoneStr,emailStr,adressStr,SUM)
 			cur6.execute(sq6)
 		except Exception, e:
 			print 'operation Table New_mg or Data_Batch error! info:%s' % e
 			#print 'telphone:%s' % telphoneStr
 	else:
 		try:
-			sq2 = 'insert into '+ mySQLDict['thirdDataTable'] + '(TITLE, DES_IP, URL, DATE, HTML_BODY) select \'%s\',\'%s\',\'%s\',\'%s\',\'%s\' from dual where not exists(select URL from ' % (dataDict['title'], dataDict['desIP'], dataDict['url'], dataDict['date'], dataDict['htmlBody']) +mySQLDict['thirdDataTable']+' where URL = \'%s\')' % dataDict['url']
+			sq2 = 'insert into '+ mySQLDict['thirdDataTable'] + '(title, des_ip, url, date, html_body) select \'%s\',\'%s\',\'%s\',\'%s\',\'%s\' from dual where not exists(select url from ' % (dataDict['title'], dataDict['desIP'], dataDict['url'], dataDict['date'], dataDict['htmlBody']) +mySQLDict['thirdDataTable']+' where url = \'%s\')' % dataDict['url']
 			cur2.execute(sq2)
 		except Exception, e:
 			print 'operation Table New_dd error! info:%s' % e
 
 	if dataDict['userName']:
 		try:
-			sq3 = 'insert into '+ mySQLDict['fourthDataTable'] + '(SRC_IP, DES_IP, URL, SessionID, DATE, userName, passWord) values(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\',\'%s\', \'%s\')' % (dataDict['srcIP'], dataDict['desIP'], dataDict['url'], dataDict['sessionID'], dataDict['date'], dataDict['userName'], md5(dataDict['passwd']))
+			sq3 = 'insert into '+ mySQLDict['fourthDataTable'] + '(src_ip, des_ip, url, sessionid, date, username, password) values(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\',\'%s\', \'%s\')' % (dataDict['srcIP'], dataDict['desIP'], dataDict['url'], dataDict['sessionID'], dataDict['date'], dataDict['userName'], md5(dataDict['passwd']))
 			cur3.execute(sq3)
-			sq5 = 'replace into user_collection(SRC_IP, DES_IP, URL, SessionID, DATE, userName, passWord) values(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\',\'%s\',\'%s\')' % (dataDict['srcIP'], dataDict['desIP'], dataDict['url'], dataDict['sessionID'], dataDict['date'], dataDict['userName'], dataDict['passwd'])
+			sq5 = 'replace into user_collection(src_ip, des_ip, url, sessionid, date, username, password) values(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\',\'%s\',\'%s\')' % (dataDict['srcIP'], dataDict['desIP'], dataDict['url'], dataDict['sessionID'], dataDict['date'], dataDict['userName'], dataDict['passwd'])
 			cur5.execute(sq5)
 		except Exception, e:
 			print 'operation Table User_mg or User_Collection error! info:%s' % e
 
 	if dataDict['type']:
 		try:
-			sq4 = 'insert into '+ mySQLDict['fifthDataTable'] + '(SRC_IP, DES_IP, TITLE, URL, SessionID, DATE, TYPE, HEAD, Response) values(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\',\'%s\', \'%s\', \'%s\', \'%s\')' % (dataDict['srcIP'], dataDict['desIP'], dataDict['title'], dataDict['url'], dataDict['sessionID'], dataDict['date'], dataDict['type'], dataDict['head'], dataDict['response'])
+			sq4 = 'insert into '+ mySQLDict['fifthDataTable'] + '(src_ip, des_ip, title, url, sessionid, date, type, head, response) values(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\',\'%s\', \'%s\', \'%s\', \'%s\')' % (dataDict['srcIP'], dataDict['desIP'], dataDict['title'], dataDict['url'], dataDict['sessionID'], dataDict['date'], dataDict['type'], dataDict['head'], dataDict['response'])
 			cur4.execute(sq4)
 		except Exception, e:
 			print 'operation Table Scan_Warning error! info:%s' % e
