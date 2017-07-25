@@ -142,12 +142,11 @@ def getSubmitValue(dataStr):
 	
 def getSSIONID(headStr):
 	ssionIDStr = 'NULL'
-	ssionID = re.search(r'JSESSIONID.*?\;', headStr, re.I|re.M|re.S)
-	
+	ssionID = re.search(r'JSESSIONID.*?\n', headStr, re.I|re.M|re.S)
 	if ssionID is not None:
-		ssionList = re.split(r'=', ssionID.group())
-		ssionIDStr = re.sub(r'\;', '', ssionList[1], re.I|re.M|re.S)
-		#print ssionIDStr
+			ssionList = re.split(r'=', ssionID.group())
+			ssionIDStr = re.sub(r'\;\s.*', '', ssionList[1], re.I|re.M|re.S)
+	#print ssionIDStr
 	return ssionIDStr
 
 def getResponse(dataStr):
