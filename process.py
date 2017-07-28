@@ -229,7 +229,7 @@ def decodeData(dataStr):
 def getDate(reponseStr):
 	monDict = {'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}
 	dateStr = re.search(r'Date: .*?\n', reponseStr, re.I|re.M|re.S)
-	format_clock = '504'
+	format_clock = '1970-01-01 00:00:00'
 	if dateStr is not None:
 		dateStr = dateStr.group()
 		tmpList = re.split(r',', dateStr)
