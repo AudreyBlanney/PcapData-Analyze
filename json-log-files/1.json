@@ -1,0 +1,3380 @@
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /welcome HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome/index.do?systemId=151
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+Cache-Control: max-age=0
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=UTF-8
+Content-Language: en-US
+Transfer-Encoding: chunked
+Date: Sun, 16 Apr 2017 02:58:34 GMT
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<html>
+<head>
+<title>中融民信_登录</title>
+<link rel="icon" href="/static/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
+<script type="text/javascript" src="/static/jquery/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/static/js/escapeFrame.js"></script>
+<script type="text/javascript" src="/static/js/shade.js"></script>
+	<script type="text/javascript">
+		function onSubmitform() {
+		    if(document.getElementById("userName").value==''){
+		    	alert('请填写用户名！');
+		    	return;
+		    }
+		    if(document.getElementById("password").value==''){
+		    	alert('请填写密码！');
+		    	return;
+		    }
+			//检查验证码
+		    if(document.getElementById("code").value==''){
+		    	alert('请填写验证码！');
+		    	return;
+		    }
+		    //document.getElementById("login").Enabled = false;
+			document.getElementById("loginForm").submit();
+            var  form = document.getElementById("loginForm");
+            shade(form);
+		}
+
+		//清空用户名密码功能
+		function onResetAll() {
+			document.getElementById("userName").value='';
+			document.getElementById("password").value='';
+			document.getElementById("code").value='';
+			reloadVerifyCode();
+		}
+		function userNameKeyPress(evt){
+			evt = (evt) ? evt : ((window.event) ? window.event : "");  //event对象
+		    keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  //针对keyCode值的不同浏览器的获取
+			if (keyCode==13){
+			    document.getElementById("password").focus();
+			}
+		}
+		function passwordKeyPress(evt){
+		 	evt = (evt) ? evt : ((window.event) ? window.event : "");  
+	    	keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  
+			if (keyCode==13){
+			    onSubmitform();
+			}
+		}
+		// 重载验证码  
+	    function reloadVerifyCode(){  
+	           var timenow = new Date().getTime();                          
+	           document.getElementById("safecode").src="/servlet/ImageServlet?d="+timenow;  
+	    }
+		
+		function codeKeyPress(evt){
+			evt = (evt) ? evt : ((window.event) ? window.event : "");  
+	    	keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  
+			if (keyCode==13){
+			    onSubmitform();
+			}
+		}
+		
+	//清除用户登陆信息，让用户能重新登陆
+	function loginAgin(){
+		window.parent.location.href = "/welcome/account-server/accountMaintenanceBankUpperLimitCtrl/loginAgin.do";
+	}
+		
+	</script>
+</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="header_bg">
+					<img src="/static/images/login/login_header.png" />
+				</div>
+				<div class="logo">
+					<img src="/static/images/login/logo.png" />
+				</div>
+			</div>
+			<div id="content">
+				<div class="cont_center">
+					<div>
+						<div class="bg_img"></div>
+						<div class="pos_img"></div>
+					</div>
+					<div class="con_img">
+						<div class="cont_left"></div>
+						<div class="cont_right">
+							<div class="right_top">
+								<div class="top_center">
+									<div class="top_bottom"></div>
+								</div>
+							</div>
+							<div class="right_center">
+								<form id="loginForm" name="loginForm" class="left" target="_self"
+									action="/welcome/login.do" method="post">
+									
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<style>
+<!--
+	.messageDiv{
+		  border-bottom: 0px;
+		  cursor: default;
+		  width:100%;
+		  height:      22px;
+		  line-height: 22px;
+		  vertical-align: middle;
+		  text-decoration: none;
+		  font-weight: 800;
+		  font-size: 13px;
+		  width:100%;
+		  height:25px;
+		  font-size:12px;
+		  background-color:#d6e4ef;
+	}
+-->
+</style>
+
+									<div>
+										<span>用户名</span><input type="text" name="userName" id="userName" value="" onkeypress="userNameKeyPress(event);"/>
+									</div>
+									<div class="diff_bg">
+										<span>密&nbsp;&nbsp;&nbsp;码</span><input type="password" id="password" name="password" value="" onkeypress="passwordKeyPress(event);"/>
+									</div>
+									
+									<div class="diff_bg">									
+									<span>验&nbsp;证&nbsp;码</span>
+									<input  type="text" id="code" name="code" value=""  onkeypress="codeKeyPress(event)"/>
+									</div>
+									<img alt="验证码" id="safecode" src="/servlet/ImageServlet"  onclick="javascript:reloadVerifyCode();">
+									  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:reloadVerifyCode();" onclick="reloadVerifyCode();" style="line-height:40px;">换一张</a>
+									<div class="diff_div">
+										<input type="button"  id = "login" name="login" class="login" onclick="onSubmitform();" /> 
+										<input type="button" name="login_reset" class="login_reset" onclick="onResetAll();" />
+									</div>	
+									<div class="diff_div">
+										<a style="color:#999999;font-size:12px;width:150px"  href="javascript:loginAgin();">用户被锁时请点击此处</a>
+									</div>	
+								</form>
+							</div>
+							<div class="right_foot">
+								<div class="foot_center">
+									<div class="foot_bottom"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+$(document).ready(function(){
+	//自适应高度的登陆页
+	var hH=$('#header').outerHeight(),
+		pH=$('.pos_img').outerHeight();
+		function bgFn(){
+			var bH=document.documentElement.clientHeight||document.body.scrollHeight,
+				wH,//中间内容总高变量
+				oCon;
+			$('#wrap').css('height',bH+'px');			
+			var wH=$('#wrap').outerHeight();			
+			$('#content').css('height',(wH-hH)+'px');
+			var oCon=$('#content').outerHeight();
+			$('.bg_img').css('height',(oCon-pH)+'px');//中间纯色背景高度铺满屏
+		}	
+	bgFn();
+	window.onresize=function(){
+		bgFn();	
+	}
+});
+</script>
+
+
+
+[10.1.1.132:36210] -- -- --> [223.203.224.136:80] 
+GET /static/js/escapeFrame.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:34 GMT
+If-None-Match: W/"191-1480557994000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"191-1480557994000"
+Date: Sun, 16 Apr 2017 02:58:34 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /static/css/login.css HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:46 GMT
+If-None-Match: W/"6474-1480558006000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"6474-1480558006000"
+Date: Sun, 16 Apr 2017 02:58:34 GMT
+
+
+
+[10.1.1.132:36212] -- -- --> [223.203.224.136:80] 
+GET /static/js/shade.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:34 GMT
+If-None-Match: W/"3391-1480557994000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"3391-1480557994000"
+Date: Sun, 16 Apr 2017 02:58:34 GMT
+
+
+
+[10.1.1.132:36208] -- -- --> [223.203.224.136:80] 
+GET /static/jquery/jquery-1.9.1.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:08 GMT
+If-None-Match: W/"268381-1480557968000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"268381-1480557968000"
+Date: Sun, 16 Apr 2017 02:58:34 GMT
+
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+GET /servlet/ImageServlet HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+Cache-Control: max-age=0
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Pragma: No-cache
+Cache-Control: No-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: image/jpeg;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Sun, 16 Apr 2017 02:58:34 GMT
+
+{decode content failed with charset: utf-8}
+
+
+[10.1.1.132:36214] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/logo.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"12765-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"12765-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:35 GMT
+
+
+
+[10.1.1.132:36212] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/cont_left.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"60857-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"60857-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:35 GMT
+
+
+
+[10.1.1.132:36208] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/cont_right.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"1280-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"1280-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:35 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login_header.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"22064-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"22064-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:35 GMT
+
+
+
+[10.1.1.132:36210] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/pos_img.gif HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"540-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"540-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:35 GMT
+
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/divbg.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"3245-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"3245-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:35 GMT
+
+
+
+[10.1.1.132:36208] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login_reset.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"4059-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"4059-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:35 GMT
+
+
+
+[10.1.1.132:36212] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"4371-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"4371-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:35 GMT
+
+
+
+[10.1.1.132:36214] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/emico.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"1741-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"1741-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:35 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /welcome HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome/index.do?systemId=151
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+Cache-Control: max-age=0
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=UTF-8
+Content-Language: en-US
+Transfer-Encoding: chunked
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<html>
+<head>
+<title>中融民信_登录</title>
+<link rel="icon" href="/static/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
+<script type="text/javascript" src="/static/jquery/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/static/js/escapeFrame.js"></script>
+<script type="text/javascript" src="/static/js/shade.js"></script>
+	<script type="text/javascript">
+		function onSubmitform() {
+		    if(document.getElementById("userName").value==''){
+		    	alert('请填写用户名！');
+		    	return;
+		    }
+		    if(document.getElementById("password").value==''){
+		    	alert('请填写密码！');
+		    	return;
+		    }
+			//检查验证码
+		    if(document.getElementById("code").value==''){
+		    	alert('请填写验证码！');
+		    	return;
+		    }
+		    //document.getElementById("login").Enabled = false;
+			document.getElementById("loginForm").submit();
+            var  form = document.getElementById("loginForm");
+            shade(form);
+		}
+
+		//清空用户名密码功能
+		function onResetAll() {
+			document.getElementById("userName").value='';
+			document.getElementById("password").value='';
+			document.getElementById("code").value='';
+			reloadVerifyCode();
+		}
+		function userNameKeyPress(evt){
+			evt = (evt) ? evt : ((window.event) ? window.event : "");  //event对象
+		    keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  //针对keyCode值的不同浏览器的获取
+			if (keyCode==13){
+			    document.getElementById("password").focus();
+			}
+		}
+		function passwordKeyPress(evt){
+		 	evt = (evt) ? evt : ((window.event) ? window.event : "");  
+	    	keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  
+			if (keyCode==13){
+			    onSubmitform();
+			}
+		}
+		// 重载验证码  
+	    function reloadVerifyCode(){  
+	           var timenow = new Date().getTime();                          
+	           document.getElementById("safecode").src="/servlet/ImageServlet?d="+timenow;  
+	    }
+		
+		function codeKeyPress(evt){
+			evt = (evt) ? evt : ((window.event) ? window.event : "");  
+	    	keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  
+			if (keyCode==13){
+			    onSubmitform();
+			}
+		}
+		
+	//清除用户登陆信息，让用户能重新登陆
+	function loginAgin(){
+		window.parent.location.href = "/welcome/account-server/accountMaintenanceBankUpperLimitCtrl/loginAgin.do";
+	}
+		
+	</script>
+</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="header_bg">
+					<img src="/static/images/login/login_header.png" />
+				</div>
+				<div class="logo">
+					<img src="/static/images/login/logo.png" />
+				</div>
+			</div>
+			<div id="content">
+				<div class="cont_center">
+					<div>
+						<div class="bg_img"></div>
+						<div class="pos_img"></div>
+					</div>
+					<div class="con_img">
+						<div class="cont_left"></div>
+						<div class="cont_right">
+							<div class="right_top">
+								<div class="top_center">
+									<div class="top_bottom"></div>
+								</div>
+							</div>
+							<div class="right_center">
+								<form id="loginForm" name="loginForm" class="left" target="_self"
+									action="/welcome/login.do" method="post">
+									
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<style>
+<!--
+	.messageDiv{
+		  border-bottom: 0px;
+		  cursor: default;
+		  width:100%;
+		  height:      22px;
+		  line-height: 22px;
+		  vertical-align: middle;
+		  text-decoration: none;
+		  font-weight: 800;
+		  font-size: 13px;
+		  width:100%;
+		  height:25px;
+		  font-size:12px;
+		  background-color:#d6e4ef;
+	}
+-->
+</style>
+
+									<div>
+										<span>用户名</span><input type="text" name="userName" id="userName" value="" onkeypress="userNameKeyPress(event);"/>
+									</div>
+									<div class="diff_bg">
+										<span>密&nbsp;&nbsp;&nbsp;码</span><input type="password" id="password" name="password" value="" onkeypress="passwordKeyPress(event);"/>
+									</div>
+									
+									<div class="diff_bg">									
+									<span>验&nbsp;证&nbsp;码</span>
+									<input  type="text" id="code" name="code" value=""  onkeypress="codeKeyPress(event)"/>
+									</div>
+									<img alt="验证码" id="safecode" src="/servlet/ImageServlet"  onclick="javascript:reloadVerifyCode();">
+									  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:reloadVerifyCode();" onclick="reloadVerifyCode();" style="line-height:40px;">换一张</a>
+									<div class="diff_div">
+										<input type="button"  id = "login" name="login" class="login" onclick="onSubmitform();" /> 
+										<input type="button" name="login_reset" class="login_reset" onclick="onResetAll();" />
+									</div>	
+									<div class="diff_div">
+										<a style="color:#999999;font-size:12px;width:150px"  href="javascript:loginAgin();">用户被锁时请点击此处</a>
+									</div>	
+								</form>
+							</div>
+							<div class="right_foot">
+								<div class="foot_center">
+									<div class="foot_bottom"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+$(document).ready(function(){
+	//自适应高度的登陆页
+	var hH=$('#header').outerHeight(),
+		pH=$('.pos_img').outerHeight();
+		function bgFn(){
+			var bH=document.documentElement.clientHeight||document.body.scrollHeight,
+				wH,//中间内容总高变量
+				oCon;
+			$('#wrap').css('height',bH+'px');			
+			var wH=$('#wrap').outerHeight();			
+			$('#content').css('height',(wH-hH)+'px');
+			var oCon=$('#content').outerHeight();
+			$('.bg_img').css('height',(oCon-pH)+'px');//中间纯色背景高度铺满屏
+		}	
+	bgFn();
+	window.onresize=function(){
+		bgFn();	
+	}
+});
+</script>
+
+
+
+[10.1.1.132:36212] -- -- --> [223.203.224.136:80] 
+GET /static/js/shade.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:34 GMT
+If-None-Match: W/"3391-1480557994000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"3391-1480557994000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36210] -- -- --> [223.203.224.136:80] 
+GET /static/js/escapeFrame.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:34 GMT
+If-None-Match: W/"191-1480557994000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"191-1480557994000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+GET /static/jquery/jquery-1.9.1.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:08 GMT
+If-None-Match: W/"268381-1480557968000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"268381-1480557968000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /static/css/login.css HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:46 GMT
+If-None-Match: W/"6474-1480558006000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"6474-1480558006000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36214] -- -- --> [223.203.224.136:80] 
+GET /servlet/ImageServlet HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+Cache-Control: max-age=0
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Pragma: No-cache
+Cache-Control: No-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: image/jpeg;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+{decode content failed with charset: utf-8}
+
+
+[10.1.1.132:36208] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/pos_img.gif HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"540-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"540-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36210] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/cont_right.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"1280-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"1280-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36212] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/cont_left.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"60857-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"60857-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login_header.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"22064-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"22064-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/logo.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"12765-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"12765-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36214] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/divbg.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"3245-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"3245-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36210] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/emico.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"1741-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"1741-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login_reset.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"4059-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"4059-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36212] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"4371-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"4371-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:36 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /welcome HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome/index.do?systemId=151
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+Cache-Control: max-age=0
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=UTF-8
+Content-Language: en-US
+Transfer-Encoding: chunked
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<html>
+<head>
+<title>中融民信_登录</title>
+<link rel="icon" href="/static/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
+<script type="text/javascript" src="/static/jquery/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/static/js/escapeFrame.js"></script>
+<script type="text/javascript" src="/static/js/shade.js"></script>
+	<script type="text/javascript">
+		function onSubmitform() {
+		    if(document.getElementById("userName").value==''){
+		    	alert('请填写用户名！');
+		    	return;
+		    }
+		    if(document.getElementById("password").value==''){
+		    	alert('请填写密码！');
+		    	return;
+		    }
+			//检查验证码
+		    if(document.getElementById("code").value==''){
+		    	alert('请填写验证码！');
+		    	return;
+		    }
+		    //document.getElementById("login").Enabled = false;
+			document.getElementById("loginForm").submit();
+            var  form = document.getElementById("loginForm");
+            shade(form);
+		}
+
+		//清空用户名密码功能
+		function onResetAll() {
+			document.getElementById("userName").value='';
+			document.getElementById("password").value='';
+			document.getElementById("code").value='';
+			reloadVerifyCode();
+		}
+		function userNameKeyPress(evt){
+			evt = (evt) ? evt : ((window.event) ? window.event : "");  //event对象
+		    keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  //针对keyCode值的不同浏览器的获取
+			if (keyCode==13){
+			    document.getElementById("password").focus();
+			}
+		}
+		function passwordKeyPress(evt){
+		 	evt = (evt) ? evt : ((window.event) ? window.event : "");  
+	    	keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  
+			if (keyCode==13){
+			    onSubmitform();
+			}
+		}
+		// 重载验证码  
+	    function reloadVerifyCode(){  
+	           var timenow = new Date().getTime();                          
+	           document.getElementById("safecode").src="/servlet/ImageServlet?d="+timenow;  
+	    }
+		
+		function codeKeyPress(evt){
+			evt = (evt) ? evt : ((window.event) ? window.event : "");  
+	    	keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  
+			if (keyCode==13){
+			    onSubmitform();
+			}
+		}
+		
+	//清除用户登陆信息，让用户能重新登陆
+	function loginAgin(){
+		window.parent.location.href = "/welcome/account-server/accountMaintenanceBankUpperLimitCtrl/loginAgin.do";
+	}
+		
+	</script>
+</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="header_bg">
+					<img src="/static/images/login/login_header.png" />
+				</div>
+				<div class="logo">
+					<img src="/static/images/login/logo.png" />
+				</div>
+			</div>
+			<div id="content">
+				<div class="cont_center">
+					<div>
+						<div class="bg_img"></div>
+						<div class="pos_img"></div>
+					</div>
+					<div class="con_img">
+						<div class="cont_left"></div>
+						<div class="cont_right">
+							<div class="right_top">
+								<div class="top_center">
+									<div class="top_bottom"></div>
+								</div>
+							</div>
+							<div class="right_center">
+								<form id="loginForm" name="loginForm" class="left" target="_self"
+									action="/welcome/login.do" method="post">
+									
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<style>
+<!--
+	.messageDiv{
+		  border-bottom: 0px;
+		  cursor: default;
+		  width:100%;
+		  height:      22px;
+		  line-height: 22px;
+		  vertical-align: middle;
+		  text-decoration: none;
+		  font-weight: 800;
+		  font-size: 13px;
+		  width:100%;
+		  height:25px;
+		  font-size:12px;
+		  background-color:#d6e4ef;
+	}
+-->
+</style>
+
+									<div>
+										<span>用户名</span><input type="text" name="userName" id="userName" value="" onkeypress="userNameKeyPress(event);"/>
+									</div>
+									<div class="diff_bg">
+										<span>密&nbsp;&nbsp;&nbsp;码</span><input type="password" id="password" name="password" value="" onkeypress="passwordKeyPress(event);"/>
+									</div>
+									
+									<div class="diff_bg">									
+									<span>验&nbsp;证&nbsp;码</span>
+									<input  type="text" id="code" name="code" value=""  onkeypress="codeKeyPress(event)"/>
+									</div>
+									<img alt="验证码" id="safecode" src="/servlet/ImageServlet"  onclick="javascript:reloadVerifyCode();">
+									  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:reloadVerifyCode();" onclick="reloadVerifyCode();" style="line-height:40px;">换一张</a>
+									<div class="diff_div">
+										<input type="button"  id = "login" name="login" class="login" onclick="onSubmitform();" /> 
+										<input type="button" name="login_reset" class="login_reset" onclick="onResetAll();" />
+									</div>	
+									<div class="diff_div">
+										<a style="color:#999999;font-size:12px;width:150px"  href="javascript:loginAgin();">用户被锁时请点击此处</a>
+									</div>	
+								</form>
+							</div>
+							<div class="right_foot">
+								<div class="foot_center">
+									<div class="foot_bottom"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+$(document).ready(function(){
+	//自适应高度的登陆页
+	var hH=$('#header').outerHeight(),
+		pH=$('.pos_img').outerHeight();
+		function bgFn(){
+			var bH=document.documentElement.clientHeight||document.body.scrollHeight,
+				wH,//中间内容总高变量
+				oCon;
+			$('#wrap').css('height',bH+'px');			
+			var wH=$('#wrap').outerHeight();			
+			$('#content').css('height',(wH-hH)+'px');
+			var oCon=$('#content').outerHeight();
+			$('.bg_img').css('height',(oCon-pH)+'px');//中间纯色背景高度铺满屏
+		}	
+	bgFn();
+	window.onresize=function(){
+		bgFn();	
+	}
+});
+</script>
+
+
+
+[10.1.1.132:36214] -- -- --> [223.203.224.136:80] 
+GET /static/js/escapeFrame.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:34 GMT
+If-None-Match: W/"191-1480557994000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"191-1480557994000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36208] -- -- --> [223.203.224.136:80] 
+GET /static/js/shade.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:34 GMT
+If-None-Match: W/"3391-1480557994000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"3391-1480557994000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+GET /static/jquery/jquery-1.9.1.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:08 GMT
+If-None-Match: W/"268381-1480557968000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"268381-1480557968000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /static/css/login.css HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:46 GMT
+If-None-Match: W/"6474-1480558006000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"6474-1480558006000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36214] -- -- --> [223.203.224.136:80] 
+GET /servlet/ImageServlet HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+Cache-Control: max-age=0
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Pragma: No-cache
+Cache-Control: No-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: image/jpeg;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+{decode content failed with charset: utf-8}
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/logo.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"12765-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"12765-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36210] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/pos_img.gif HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"540-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"540-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36208] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/cont_right.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"1280-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"1280-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login_header.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"22064-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"22064-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36212] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/cont_left.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"60857-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"60857-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+GET /welcome HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome/index.do?systemId=151
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+Cache-Control: max-age=0
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=UTF-8
+Content-Language: en-US
+Transfer-Encoding: chunked
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<html>
+<head>
+<title>中融民信_登录</title>
+<link rel="icon" href="/static/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
+<script type="text/javascript" src="/static/jquery/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/static/js/escapeFrame.js"></script>
+<script type="text/javascript" src="/static/js/shade.js"></script>
+	<script type="text/javascript">
+		function onSubmitform() {
+		    if(document.getElementById("userName").value==''){
+		    	alert('请填写用户名！');
+		    	return;
+		    }
+		    if(document.getElementById("password").value==''){
+		    	alert('请填写密码！');
+		    	return;
+		    }
+			//检查验证码
+		    if(document.getElementById("code").value==''){
+		    	alert('请填写验证码！');
+		    	return;
+		    }
+		    //document.getElementById("login").Enabled = false;
+			document.getElementById("loginForm").submit();
+            var  form = document.getElementById("loginForm");
+            shade(form);
+		}
+
+		//清空用户名密码功能
+		function onResetAll() {
+			document.getElementById("userName").value='';
+			document.getElementById("password").value='';
+			document.getElementById("code").value='';
+			reloadVerifyCode();
+		}
+		function userNameKeyPress(evt){
+			evt = (evt) ? evt : ((window.event) ? window.event : "");  //event对象
+		    keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  //针对keyCode值的不同浏览器的获取
+			if (keyCode==13){
+			    document.getElementById("password").focus();
+			}
+		}
+		function passwordKeyPress(evt){
+		 	evt = (evt) ? evt : ((window.event) ? window.event : "");  
+	    	keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  
+			if (keyCode==13){
+			    onSubmitform();
+			}
+		}
+		// 重载验证码  
+	    function reloadVerifyCode(){  
+	           var timenow = new Date().getTime();                          
+	           document.getElementById("safecode").src="/servlet/ImageServlet?d="+timenow;  
+	    }
+		
+		function codeKeyPress(evt){
+			evt = (evt) ? evt : ((window.event) ? window.event : "");  
+	    	keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode);  
+			if (keyCode==13){
+			    onSubmitform();
+			}
+		}
+		
+	//清除用户登陆信息，让用户能重新登陆
+	function loginAgin(){
+		window.parent.location.href = "/welcome/account-server/accountMaintenanceBankUpperLimitCtrl/loginAgin.do";
+	}
+		
+	</script>
+</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="header_bg">
+					<img src="/static/images/login/login_header.png" />
+				</div>
+				<div class="logo">
+					<img src="/static/images/login/logo.png" />
+				</div>
+			</div>
+			<div id="content">
+				<div class="cont_center">
+					<div>
+						<div class="bg_img"></div>
+						<div class="pos_img"></div>
+					</div>
+					<div class="con_img">
+						<div class="cont_left"></div>
+						<div class="cont_right">
+							<div class="right_top">
+								<div class="top_center">
+									<div class="top_bottom"></div>
+								</div>
+							</div>
+							<div class="right_center">
+								<form id="loginForm" name="loginForm" class="left" target="_self"
+									action="/welcome/login.do" method="post">
+									
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<style>
+<!--
+	.messageDiv{
+		  border-bottom: 0px;
+		  cursor: default;
+		  width:100%;
+		  height:      22px;
+		  line-height: 22px;
+		  vertical-align: middle;
+		  text-decoration: none;
+		  font-weight: 800;
+		  font-size: 13px;
+		  width:100%;
+		  height:25px;
+		  font-size:12px;
+		  background-color:#d6e4ef;
+	}
+-->
+</style>
+
+									<div>
+										<span>用户名</span><input type="text" name="userName" id="userName" value="" onkeypress="userNameKeyPress(event);"/>
+									</div>
+									<div class="diff_bg">
+										<span>密&nbsp;&nbsp;&nbsp;码</span><input type="password" id="password" name="password" value="" onkeypress="passwordKeyPress(event);"/>
+									</div>
+									
+									<div class="diff_bg">									
+									<span>验&nbsp;证&nbsp;码</span>
+									<input  type="text" id="code" name="code" value=""  onkeypress="codeKeyPress(event)"/>
+									</div>
+									<img alt="验证码" id="safecode" src="/servlet/ImageServlet"  onclick="javascript:reloadVerifyCode();">
+									  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:reloadVerifyCode();" onclick="reloadVerifyCode();" style="line-height:40px;">换一张</a>
+									<div class="diff_div">
+										<input type="button"  id = "login" name="login" class="login" onclick="onSubmitform();" /> 
+										<input type="button" name="login_reset" class="login_reset" onclick="onResetAll();" />
+									</div>	
+									<div class="diff_div">
+										<a style="color:#999999;font-size:12px;width:150px"  href="javascript:loginAgin();">用户被锁时请点击此处</a>
+									</div>	
+								</form>
+							</div>
+							<div class="right_foot">
+								<div class="foot_center">
+									<div class="foot_bottom"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+$(document).ready(function(){
+	//自适应高度的登陆页
+	var hH=$('#header').outerHeight(),
+		pH=$('.pos_img').outerHeight();
+		function bgFn(){
+			var bH=document.documentElement.clientHeight||document.body.scrollHeight,
+				wH,//中间内容总高变量
+				oCon;
+			$('#wrap').css('height',bH+'px');			
+			var wH=$('#wrap').outerHeight();			
+			$('#content').css('height',(wH-hH)+'px');
+			var oCon=$('#content').outerHeight();
+			$('.bg_img').css('height',(oCon-pH)+'px');//中间纯色背景高度铺满屏
+		}	
+	bgFn();
+	window.onresize=function(){
+		bgFn();	
+	}
+});
+</script>
+
+
+
+[10.1.1.132:36214] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/divbg.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"3245-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"3245-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36210] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/emico.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"1741-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"1741-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36212] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"4371-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"4371-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login_reset.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"4059-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"4059-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+GET /static/css/login.css HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:46 GMT
+If-None-Match: W/"6474-1480558006000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"6474-1480558006000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36208] -- -- --> [223.203.224.136:80] 
+GET /static/js/escapeFrame.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:34 GMT
+If-None-Match: W/"191-1480557994000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"191-1480557994000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36214] -- -- --> [223.203.224.136:80] 
+GET /static/jquery/jquery-1.9.1.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:08 GMT
+If-None-Match: W/"268381-1480557968000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"268381-1480557968000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36210] -- -- --> [223.203.224.136:80] 
+GET /static/js/shade.js HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:34 GMT
+If-None-Match: W/"3391-1480557994000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"3391-1480557994000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36214] -- -- --> [223.203.224.136:80] 
+GET /servlet/ImageServlet HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+Cache-Control: max-age=0
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Pragma: No-cache
+Cache-Control: No-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: image/jpeg;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+{decode content failed with charset: utf-8}
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login_header.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"22064-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"22064-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36212] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/pos_img.gif HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"540-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"540-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36210] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/cont_right.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"1280-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"1280-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36208] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/cont_left.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"60857-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"60857-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/logo.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"12765-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"12765-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36214] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/divbg.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"3245-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"3245-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36212] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login_reset.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"4059-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"4059-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/emico.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"1741-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"1741-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36210] -- -- --> [223.203.224.136:80] 
+GET /static/images/login/login.png HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/static/css/login.css
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+If-Modified-Since: Thu, 01 Dec 2016 02:06:28 GMT
+If-None-Match: W/"4371-1480557988000"
+Cache-Control: max-age=0
+
+
+HTTP/1.1 304 Not Modified
+Server: Apache-Coyote/1.1
+ETag: W/"4371-1480557988000"
+Date: Sun, 16 Apr 2017 02:58:39 GMT
+
+
+
+[10.1.1.132:36346] -- -- --> [117.18.237.29:80] 
+POST / HTTP/1.1
+Host: ocsp.digicert.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+
+{decode content failed, unknown charset}
+
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=172800
+Content-Type: application/ocsp-response
+Date: Sun, 16 Apr 2017 02:58:57 GMT
+Etag: "58f27f09-1d7"
+Expires: Sat, 22 Apr 2017 14:58:57 GMT
+Last-Modified: Sat, 15 Apr 2017 20:14:01 GMT
+Server: ECS (hhp/B0D0)
+X-Cache: HIT
+Content-Length: 471
+
+{decode content failed, unknown charset}
+
+
+[10.1.1.132:36346] -- -- --> [117.18.237.29:80] 
+POST / HTTP/1.1
+Host: ocsp.digicert.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+
+{decode content failed, unknown charset}
+
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=172800
+Content-Type: application/ocsp-response
+Date: Sun, 16 Apr 2017 02:58:58 GMT
+Etag: "58f29f52-1d7"
+Expires: Sat, 22 Apr 2017 14:58:58 GMT
+Last-Modified: Sat, 15 Apr 2017 22:31:46 GMT
+Server: ECS (hhp/9AD9)
+X-Cache: HIT
+Content-Length: 471
+
+{decode content failed, unknown charset}
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+POST /welcome/login.do HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 48
+
+userName=zhangmingming&password=123456&code=5kab
+
+HTTP/1.1 302 Found
+Server: Apache-Coyote/1.1
+Location: http://sys.minxinjituan.com/welcome/changeSystem.do
+Content-Language: en-US
+Content-Length: 0
+Date: Sun, 16 Apr 2017 02:59:10 GMT
+
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+GET /welcome/changeSystem.do HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=UTF-8
+Content-Language: en-US
+Content-Length: 6232
+Date: Sun, 16 Apr 2017 02:59:10 GMT
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>中融民信_系统选择</title>
+<link rel="icon" href="/static/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
+<script type="text/javascript" src="/static/jquery/jquery-1.9.1.min.js"></script>
+<script>
+    function confirmLogout(){
+        if(false) {
+            var c = confirm("确定退出呼叫连接？");
+            if(c == true){
+                window.parent.logout();
+                window.location.href = "/welcome/loginOut.do";
+                return
+            }
+        }else{
+            window.location.href = "/welcome/loginOut.do";
+        }
+    }
+</script>
+</head>
+<body>
+    <div id="wrap">
+    	<div id="header">
+        	<div class="header_bg"><img src="/static/images/login/login_header.png"/></div>
+        	<div class="logo"><img src="/static/images/login/logo.png"/></div>
+            <div class="sys_off"><a href="javascript:void(0);" onclick="confirmLogout();" title="退出"><img src="/static/images/login/tcico.png"/></a></div>
+        </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<style>
+<!--
+	.messageDiv{
+		  border-bottom: 0px;
+		  cursor: default;
+		  width:100%;
+		  height:      22px;
+		  line-height: 22px;
+		  vertical-align: middle;
+		  text-decoration: none;
+		  font-weight: 800;
+		  font-size: 13px;
+		  width:100%;
+		  height:25px;
+		  font-size:12px;
+		  background-color:#d6e4ef;
+	}
+-->
+</style>
+
+        <div class="sys_content">
+        	<div class="index_cont_par">
+                <div style="width:322px; position:relative;"><img src="/static/images/login/div.png"/><span>欢迎进入中融民信综合业务平台！</span></div>
+                <ul>
+                   	
+                    <li>
+                   		<a href="/welcome/index.do?systemId=2" title="客户关系管理系统"><img src="/static/images/login/sys_crm.png" alt="客户关系管理系统"/></a>
+                    </li>
+					
+                    <li>
+                   		<a href="/welcome/index.do?systemId=151" title="信用审批管理系统"><img src="/static/images/login/sys_as.png" alt="信用审批管理系统"/></a>
+                    </li>
+					
+                    <li>
+                   		<a href="/welcome/index.do?systemId=1" title="统一用户管理系统"><img src="/static/images/login/sys_uc.png" alt="统一用户管理系统"/></a>
+                    </li>
+					
+                    <li>
+                   		<a href="/welcome/index.do?systemId=259" title="报表管理系统"><img src="/static/images/login/report_crm.png" alt="报表管理系统"/></a>
+                    </li>
+					
+                    <li class="sys_line"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="sys_footer">
+        	<p>Copyright&nbsp;&copy;&nbsp;2013-2016&nbsp;中融民信&nbsp;版权所有&nbsp;&nbsp;&nbsp;&nbsp;v3.8.3</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+//系统分类页面中间高度自适应屏幕分辨率
+var hH=$('#header').outerHeight();
+	fH=$('.sys_footer').outerHeight();
+	function hFn()
+	{
+		var bH=document.documentElement.clientHeight||document.body.scrollHeight;
+		$('#wrap').css('height',bH+'px');
+		var wH=$('#wrap').outerHeight();
+		$('.sys_content').css('height',(wH-hH-fH)+'px');
+	}
+hFn();
+window.onresize=function(){
+	hFn();	
+};
+</script>
+
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+GET /welcome/index.do?systemId=1 HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome/changeSystem.do
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=UTF-8
+Content-Language: en-US
+Transfer-Encoding: chunked
+Date: Sun, 16 Apr 2017 02:59:13 GMT
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<html>
+<head>
+    <title>统一用户管理系统</title>
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon" />
+    <!-- 引入样式 -->
+    <link type="text/css" rel="stylesheet" href="/static/css/sysStyle.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/login.css"/>
+
+    <script type="text/javascript" src="/static/jquery/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="/static/lhgdialog/lhgdialog.min.js"></script>
+    <script type="text/javascript">
+        parent.document.title=document.title;
+        function show_context(url){
+            var iframecontext=document.getElementById("cont_right_show");
+            iframecontext.src=url;
+        }
+        /*注释掉CRM工作台提醒
+         $(function(){
+         if('false'){
+         var crmRemindUrl = "/welcome/crm-server/crmNewsRemindCtrl/queryCount.do";
+         q_msg_count(crmRemindUrl,null);
+         }else if('false'){
+         var q_date ='12';
+         if('false'){
+         q_date = '09';
+         }
+         var asRemindUrl = "/welcome/as-server/asMessageWarnCtrl/queryCount.do?roleId=20120&q_checkerId=approveuserid&q_checkerId2=20851&q_managerId=approvemanagerid&q_sysDate="+q_date;
+         q_msg_count(asRemindUrl,null);
+         }
+         })
+         function q_msg_count(url,parameter){
+         var count_obj = $("#show_newmessages");
+         $.ajax({
+         type:"POST",
+         dataType:"json",
+         url:url,
+         data:parameter,
+         async: true,
+         success: function(data){
+         var msc = data.messageCount;
+         count_obj.html(msc);
+         },
+         error:function(e){
+         try{}catch(e){}
+         }
+         });
+         }
+         */
+
+        function confirmLogout(){
+             if(false) {
+                 var c = confirm("确定退出呼叫连接？");
+                 if(c == true){
+                     window.parent.logout();
+                     window.location.href = "/welcome/loginOut.do";
+                     return;
+                 }
+             }else{
+                 window.location.href = "/welcome/loginOut.do";
+             }
+        }
+    </script>
+</head>
+<body>
+<div id="wrap">
+    <div id="header" class="index_header">
+        <div class="index_logo">
+            <img src="/static/images/login/index_logo.png" /><span>统一用户管理系统</span>
+        </div>
+        <div class="index_right">
+            <div class="fl_left">
+                <div>欢迎您！<span>张明明</span></div>
+                <p class="diff_phead">
+                    
+                    <a href="#" onclick=" window.open('/static/helpFortune/default.html');">帮助(理财端)</a>|
+                    <a href="#" onclick=" window.open('/static/helpCredit/default.html');">帮助(信贷端)</a>|
+                    
+                    
+                        <a href="#" onclick="show_context('/welcome/uc-server/feedbackSuggestsNoticeCtrl/queryFeedbackNoticeBySelf.do?busiId=searchFeedbackBySelfList&q_userId=20851&act=query');">反馈
+                            <font style="color: yellow;">(<span id="bId">0</span>)</font>
+                        </a>
+                        <a href="#" onclick="show_context('/welcome/uc-server/feedbackSuggestsNoticeCtrl/queryFeedbackNoticeBySelf.do?busiId=searchNoticeBySelfList&q_userId=20851&q_noticeUserId=20851&act=query&q_deptId=sysdept');">新公告
+                            <font style="color: yellow;">(<span id="nId">14</span>)</font>
+                        </a>|
+                    
+                    <a href="#" onclick="show_context('/welcome/uc-server/employeeCtrl/editPasswordInput.do');">修改密码</a>|
+                    <a href="javascript:location.href='/welcome/changeSystem.do'" onclick="parent.document.title='民信_系统选择'">切换系统</a>|
+                    <a href="javascript:void(0);" onclick="confirmLogout();">退出登录</a>
+
+                </p>
+            </div>
+        </div>
+    </div>
+    
+        
+        
+            <div class="index_content">
+                <div class="index_cont_par">
+                    <div class="index_cont_left">
+                        
+                            <div>
+                                <h3>用户管理</h3>
+                                <ul>
+                                    
+                                        <li><a href="#"onclick="show_context('/welcome/uc-server/employeeCtrl/query.do?busiId=searchUser&amp;act=query&q_dept=sysdept&q_modOperateId=4');">用户管理</a></li>
+                                    
+                                        <li><a href="#"onclick="show_context('/welcome/uc-server/employeeCtrl/queryPassword.do?busiId=searchUser&amp;act=query&q_dept=sysdept&q_modOperateId=6');">用户密码重置</a></li>
+                                    
+                                </ul>
+                            </div>
+                        
+                        <div class="menu_vertical">
+                            <div class="me_jt"></div>
+                        </div>
+                    </div>
+                    <div class="sys_content_right">
+                        <iframe width="100%" height="100%" id="cont_right_show" frameborder="0" scrolling="auto" src="/welcome/uc-server/employeeCtrl/right_content_input.do">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        
+    
+    <div class="sys_footer index_foot">
+        <p>Copyright&nbsp;&copy;&nbsp;2013-2016&nbsp;中融民信&nbsp;版权所有&nbsp;&nbsp;&nbsp;&nbsp;v3.8.3</p>
+    </div>
+</div>
+<input type="hidden" id="ctx" value="/welcome">
+</body>
+</html>
+<script>
+var Next_lH=0;
+var lH=0;
+var rH=0;
+var flag=false;
+var real_lH=0;
+//重新计算高度
+function reheight(){
+	if(flag){
+		Next_lH=$('.index_cont_left').outerHeight();
+		if(Next_lH>lH){
+			lH=Next_lH;
+			if(lH-rH>0)
+			{
+			    $('.sys_content_right').css('height',(lH-2+'px'));
+			}else
+			{
+			    $('.index_cont_left').css('height',rH+'px');
+			}
+			wFn();
+			reFn();
+			var $left=$('.index_cont_left'),//左侧
+	        $par=$('.index_cont_par'),//主体
+	        $right=$('.sys_content_right'),//右侧
+	        oLh=$left.innerWidth(),//左侧宽度
+	        oPh;//主体宽度
+			real_lH=$('.index_cont_left').height();
+		}else{
+			 $('.index_cont_left').css('height',real_lH+'px');
+			//$('.index_cont_left').css('height',lH-2+'px');
+		}
+	}
+}
+$(document).ready(function(){
+	//中间内容等高
+	lH=$('.index_cont_left').outerHeight();
+	rH=$('.sys_content_right').outerHeight();
+	var hH=$('#header').outerHeight();
+	var fH=$('.sys_footer').outerHeight();
+	var HMH=$('.menu').outerHeight();
+	if(lH-rH>0)
+	{
+	    $('.sys_content_right').css('height',(lH-2+'px'));
+	}else
+	{
+	    $('.index_cont_left').css('height',rH+'px');
+	}
+	//判断如果权限少内容高度不足撑开整屏就设置高度
+	function reFn(){
+	    var oParh=Math.max(document.body.offsetHeight,document.documentElement.clientHeight)-hH-fH-HMH;//页面加载就获取中间内容主体的高度
+	    if(oParh>700){//适应1920的大屏分辨率
+	        if(lH<660&&rH<620){//1920分辨率下财富
+	            lH=oParh-64+'px';
+	            $('.index_cont_left').css('height',lH);
+	            rH=oParh-42+'px';
+	            $('.sys_content_right').css('height',rH);
+	        }
+	        if(lH<620&&rH<620){//1920分辨率下uc
+	            lH=oParh-64+'px';
+	            $('.index_cont_left').css('height',lH);
+	            rH=oParh-42+'px';
+	            $('.sys_content_right').css('height',rH);
+	        }
+	    }else{
+	        if(lH<527&&rH<628)
+	        {
+	            lH=oParh-64+'px';
+	            $('.index_cont_left').css('height',lH);
+	            rH=oParh-42+'px';
+	            $('.sys_content_right').css('height',rH);
+	        }
+	        if(lH<601&&rH<628)
+	        {
+	            lH=oParh-64+'px';
+	            $('.index_cont_left').css('height',lH);
+	            rH=oParh-42+'px';
+	            $('.sys_content_right').css('height',rH);
+	        }
+	    }
+	    $('.menu_vertical').css('height',oParh+'px');//设置收缩左侧菜单竖线的高度
+	}
+	
+	var $left=$('.index_cont_left'),//左侧
+	        $par=$('.index_cont_par'),//主体
+	        $right=$('.sys_content_right'),//右侧
+	        oLh=$left.innerWidth(),//左侧宽度
+	        oPh;//主体宽度
+	
+	function wFn()
+	{
+	    oPh=$par.innerWidth();//窗口改变随时获取主体宽度
+	    if($left.css('marginLeft')=='0px'){
+	        $right.css('width',(oPh-oLh-42)+'px');
+	    }else{
+	        $right.css('width',(oPh-20)+'px');
+	    }
+	}
+	
+	//刷新页面动态设置$right的宽度
+	wFn();
+	reFn();
+	
+	//改变窗口尺寸也是自动获取
+	window.onresize=function(){
+	    wFn();
+	    reFn();
+	};
+	
+	//左侧边栏隐藏和显示，同时改变右边宽度
+	$('.me_jt').toggle(
+	        function(){
+	            $left.css('margin','0 0 0 -216px');
+	            $right.css('width',(oPh-34)+'px');
+	        },function(){
+	            $left.css('margin','0 20px 0 0');
+	            wFn();
+	        });
+	
+	//点击li换背景
+	var $aA=$('.index_cont_left a');
+	for(var i=0;i<$aA.length;i++)
+	{
+	    $aA.eq(i).click(function()
+	    {
+	        $aA.parent().removeClass('list_click');
+	        $(this).parent('li').addClass('list_click');
+	    });
+	}
+	
+	
+	var text,period,days1,days2,days3,tdays;
+	var ctx = $("#ctx").val();
+	findViewRole();
+	function findViewRole(){
+	    $.ajax({
+	        type : "post",
+	        url :""+ctx+"/fortune-server/displayCtrl/findViewRole.do",
+	        dataType : "json",
+	        async: false,
+	        beforeSend : function(XMLHttpRequest) {},
+	        success : function(data) {
+	            setView(data);
+	        },
+	        complete : function(XMLHttpRequest, textStatus) {},
+	        error : function(data) {}
+	    });
+	}
+	
+	function setView(data){
+	    for(var i=0;i<data.length;i++){
+	        if(data[i].ID == 1){
+	            days1 = data[i].DAYS;
+	            showChangeView();
+	            setInterval( showChangeView, data[i].PERIOD*60000);
+	        }
+	        if(data[i].ID == 2){
+	            tdays = data[i].DAYS;
+	            showTransferView();
+	            setInterval( showTransferView, data[i].PERIOD*60000);
+	        }
+	        if(data[i].ID == 3){
+	            days2 = data[i].DAYS;
+	            showChangeView2();
+	            setInterval( showChangeView2, data[i].PERIOD*60000);
+	        }
+	        if(data[i].ID == 4){
+	            days3 = data[i].DAYS;
+	            showChangeView3();
+	            setInterval( showChangeView3, data[i].PERIOD*60000);
+	        }
+	    }
+	}
+	
+	
+	function showView(﻿noticeId){
+	    /* 右下角窗口订制 */
+	    $.dialog.notice = function( options )
+	    {
+	        var opts = options || {},
+	                api, aConfig, hide, wrap, top,
+	                duration = opts.duration || 800;
+	
+	        var config = {
+	            id: noticeId,
+	            left: '100%',
+	            top: '100%',
+	            fixed: true,
+	            drag: false,
+	            resize: false,
+	            init: function(here){
+	                api = this;
+	                aConfig = api.config;
+	                wrap = api.DOM.wrap;
+	                top = parseInt(wrap[0].style.top);
+	                hide = top + wrap[0].offsetHeight;
+	
+	                wrap.css('top', hide + 'px')
+	                        .animate({top: top + 'px'}, duration, function(){
+	                            opts.init && opts.init.call(api, here);
+	                        });
+	            },
+	            close: function(here){
+	                wrap.animate({top: hide + 'px'}, duration, function(){
+	                    opts.close && opts.close.call(this, here);
+	                    aConfig.close = $.noop;
+	                    api.close();
+	                });
+	
+	                return false;
+	            }
+	        };
+	
+	        for(var i in opts)
+	        {
+	            if( config[i] === undefined ) config[i] = opts[i];
+	        }
+	
+	        return $.dialog( config );
+	    };
+	
+	    /* 调用右下角窗口 */
+	    $.dialog.notice({
+	        title: '提示',
+	        width: 260,  /*必须指定一个像素宽度值或者百分比，否则浏览器窗口改变可能导致lhgDialog收缩 */
+	        height: 80,
+	        content: text,
+	        min: false,
+	        max: false,
+	        time: 100
+	    });
+	}
+	
+	
+	function showChangeView(){
+	    var status = "4";
+	    $.ajax({
+	        type : "post",
+	        url :""+ctx+"/fortune-server/displayCtrl/findChangeText.do",
+	        dataType : "json",
+	        data:﻿{status:status,days:days1},
+	    async: false,
+	            beforeSend : function(XMLHttpRequest) {},
+	    success : function(data) {
+	        text = data.TEXT;
+	        days = data.DAYS;
+	        period = data.PERIOD;
+	    },
+	    complete : function(XMLHttpRequest, textStatus) {},
+	    error : function(data) {}
+	});
+	
+	if(text!=''){
+	    showView('changev');
+	}
+	
+	}
+	function showChangeView2(){
+	
+	    $.ajax({
+	        type : "post",
+	        url :""+ctx+"/fortune-server/displayCtrl/findChangeText.do",
+	        dataType : "json",
+	        data:﻿{status:"2",days:days2},
+	    async: false,
+	            beforeSend : function(XMLHttpRequest) {},
+	    success : function(data) {
+	        text = data.TEXT;
+	        days = data.DAYS;
+	        period = data.PERIOD;
+	    },
+	    complete : function(XMLHttpRequest, textStatus) {},
+	    error : function(data) {}
+	});
+	
+	if(text!=''){
+	    showView('changev2');
+	}
+	
+	}
+	
+	function showChangeView3(){
+	
+	    $.ajax({
+	        type : "post",
+	        url :""+ctx+"/fortune-server/displayCtrl/findChangeText.do",
+	        dataType : "json",
+	        data:﻿{status:"3",days:days3},
+	    async: false,
+	            beforeSend : function(XMLHttpRequest) {},
+	    success : function(data) {
+	        text = data.TEXT;
+	        days = data.DAYS;
+	        period = data.PERIOD;
+	    },
+	    complete : function(XMLHttpRequest, textStatus) {},
+	    error : function(data) {}
+	});
+	
+	if(text!=''){
+	    showView('changev3');
+	}
+	
+	}
+	//
+	function showTransferView(){
+	    $.ajax({
+	        type : "post",
+	        url :""+ctx+"/fortune-server/displayCtrl/findTransferText.do",
+	        dataType : "json",
+	        data:﻿{days:tdays},
+	    async: false,
+	            beforeSend : function(XMLHttpRequest) {},
+	    success : function(data) {
+	        text = data.TEXT;
+	    },
+	    complete : function(XMLHttpRequest, textStatus) {},
+	    error : function(data) {}
+	});
+	
+	if(text!=''){
+	    showView('transferv');
+	}
+	
+	}
+	
+	//跳转地址
+	function al(href){
+	    show_context(""+ctx+"/"+href+"");
+	}
+	real_lH=$('.index_cont_left').height();
+	flag=true;
+});
+</script>
+
+
+[10.1.1.132:36216] -- -- --> [223.203.224.136:80] 
+GET /welcome/uc-server/employeeCtrl/right_content_input.do HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sys.minxinjituan.com/welcome/index.do?systemId=1
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=UTF-8
+Content-Language: en-US
+Content-Length: 1670
+Date: Sun, 16 Apr 2017 02:59:13 GMT
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0">
+<meta http-equiv="Expires" content="0">
+<script type="text/javascript" >
+var stcPath = '/static';
+
+window.onload=function(){ 
+	//firefox and opera backspace   
+    document.onkeypress = banBackSpace;  
+    //ie and chorme backspace
+    document.onkeydown = banBackSpace;  
+}
+
+function banBackSpace(e){  
+    
+    var ev = e || window.event;     
+    var obj = ev.target || ev.srcElement;
+    var t = obj.type || obj.getAttribute('type');       
+    
+    var vReadOnly = obj.readOnly;  
+    var vDisabled = obj.disabled;  
+       
+    vReadOnly = (vReadOnly == undefined) ? false : vReadOnly;  
+    vDisabled = (vDisabled == undefined) ? true : vDisabled;  
+    var flag1 = ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea") && (vReadOnly == true || vDisabled == true);  
+    var flag2 = ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea";
+    if (flag2 || flag1)
+        event.returnValue = false;
+}  
+</script>
+<input type="hidden" id="ctx" value="/welcome">
+
+<html>
+<head>
+<link type="text/css" rel="stylesheet"
+	href="/static/css/sysStyle.css" />
+</head>
+<body>
+
+	<div
+		style="width:100%; height:100%; overflow-y:auto; overflow-x:hidden;">
+		<img src="/static/images/uc_right.jpg" width="100%" height="100%"/>
+	</div>
+
+
+
+</body>
+</html>
+
+
+[10.1.1.132:36206] -- -- --> [223.203.224.136:80] 
+POST /welcome/fortune-server/displayCtrl/findViewRole.do HTTP/1.1
+Host: sys.minxinjituan.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+X-Requested-With: XMLHttpRequest
+Referer: http://sys.minxinjituan.com/welcome/index.do?systemId=1
+Cookie: JSESSIONID=1C2DEED169DF56CA8B3F0022027E9B78
+Connection: keep-alive
+Content-Length: 0
+
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Sun, 16 Apr 2017 02:59:13 GMT
+
+[]
+
+
