@@ -4,7 +4,7 @@
 #						   			#
 #      Run Program          		#
 # 									#
-#	__Author__ = Audrey丶Blanney	#
+#	__Author__ = Audrey丶Blanney	    #
 #									#
 #####################################
 
